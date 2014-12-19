@@ -1,0 +1,71 @@
+\section{Linear algebra}
+
+\begin{definition}
+	Let $\vec A$ be an $n \times n$ matrix. Then for $t \in \mathbb R$,
+	\begin{equation}
+		e^{\vec At} = \sum_{k = 0}^\infty \frac{\vec A^k t^k}{k!}
+	\end{equation}
+\end{definition}
+
+\begin{proposition}
+	\label{prop:la:ptp}
+	If $\vec P, \vec T$ are linear transformations on $\mathbb R^n$ (i.e. $\vec P, \vec T \in \mathbb R^{n \times n}$) and $\vec S = \vec P \vec T \vec P^{-1}$ then $e^{\vec S} = \vec P e^{\vec T} \vec P^{-1}$.
+\end{proposition}
+
+\begin{proof}
+	\begin{align*}
+		e^{\vec S} 	&= \lim_{n \to \infty} \sum_{k = 0}^n \frac{(\vec P \vec T \vec P^{-1})^k}{k!} \\
+						&= \lim_{n \to \infty} \sum_{k = 0}^n \frac{\vec P \vec T^k \vec P^{-1}}{k!} \\
+						&= \vec P \left(\lim_{n \to \infty} \sum_{k = 0}^n \frac{T^k}{k!} \right) \vec P^{-1} \\
+						&= \vec P e^{\vec T} \vec P^{-1}
+	\end{align*}
+\end{proof}
+
+\begin{proposition}
+	For any $\vec A \in \mathbb R^{2 \times 2}$, there exists an invertible matrix $\vec W \in \mathbb R^{2 \times 2}$ (whose columns consist of generalised eigenvectors of $\vec A$) such that the matrix
+	\begin{equation*}
+		\vec \Lambda = \vec W^{-1} \vec A \vec W
+	\end{equation*}
+	has one of the following forms
+	\begin{equation*}
+		\Lambda =
+			\begin{bmatrix}
+				\lambda & 0 \\
+				0 		& \mu
+			\end{bmatrix},
+		\Lambda = 
+			\begin{bmatrix}
+				\lambda & 1 \\
+				0 		& \lambda
+			\end{bmatrix}, \text{or }
+		\Lambda = 
+			\begin{bmatrix}
+				a 	& -b \\
+				b 	& a
+			\end{bmatrix}
+	\end{equation*}
+	It then follows from above that
+	\begin{equation*}
+		e^{(\Lambda t)} =
+			\begin{bmatrix}
+				e^{\lambda t}	& 0 \\
+				0 				& e^{\mu t}
+			\end{bmatrix},
+		e^{(\Lambda t)} = 
+			e^{\lambda t}
+			\begin{bmatrix}
+				1 	& t \\
+				0 	& 1
+			\end{bmatrix}, \text{or }
+		e^{(\Lambda t)} =
+			e^{at}
+			\begin{bmatrix}
+				\cos{bt}	& -\sin{bt} \\
+				\sin{bt}	& \cos{bt}
+			\end{bmatrix}
+	\end{equation*}
+	respectively. And by Proposition~\ref{prop:la:ptp}, the matrix $e^{\vec At}$ is then given by
+	\begin{equation*}
+		e^{\vec At} = \vec W e^{\vec \Lambda t} \vec W^{-1}
+	\end{equation*}
+\end{proposition}

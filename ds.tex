@@ -1,0 +1,32 @@
+\documentclass{report}
+
+\usepackage{amsmath}
+\usepackage{mathtools}
+\usepackage{amssymb}
+\usepackage[hidelinks]{hyperref}
+\usepackage{algorithm}
+\usepackage[noend]{algpseudocode}
+\usepackage{amsthm}
+\usepackage{graphicx}
+\usepackage{animate}
+
+\renewcommand{\vec}[1]{\boldsymbol{\mathbf{#1}}}
+\newtheorem{definition}{Definition}[section]
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{proposition}{Proposition}[section]
+\newtheorem{claim}{Claim}[section]
+
+\title{C24 Dynamical Systems -- notes}
+\author{Tuan Anh Le}
+
+\begin{document}
+\maketitle
+
+\input{la/la}
+
+We have: state $\vec x(t) \in \mathbb R^n$, function $\vec f: D \to \mathbb R^n, D \subseteq \mathbb R^n$. Then a dynamical system can be written as
+\begin{equation}
+	\vec{\dot x} = \vec f(\vec x)
+\end{equation}
+
+\end{document}
