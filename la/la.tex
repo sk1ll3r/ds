@@ -1,11 +1,19 @@
 \section{Linear algebra}
-
 \begin{definition}
-	Let $\vec A$ be an $n \times n$ matrix. Then for $t \in \mathbb R$,
+	Let $\vec A$ be an $n \times n$ matrix. Then
 	\begin{equation}
-		e^{\vec At} = \sum_{k = 0}^\infty \frac{\vec A^k t^k}{k!}
+		e^{\vec A} = \sum_{k = 0}^\infty \frac{\vec A^k}{k!}
 	\end{equation}
 \end{definition}
+
+\begin{proposition}
+	\label{prop:la:commute}
+	If $\vec S$ and $\vec T$ are linear transformations on $\mathbb R^n$ which commute, i.e. $\vec S \vec T = \vec T \vec S$, then $e^{\vec S + \vec T} = e^{\vec S \vec T}$.
+\end{proposition}
+
+\begin{proof}
+	Not interesting.
+\end{proof}
 
 \begin{proposition}
 	\label{prop:la:ptp}
@@ -22,42 +30,299 @@
 \end{proof}
 
 \begin{proposition}
-	For any $\vec A \in \mathbb R^{2 \times 2}$, there exists an invertible matrix $\vec W \in \mathbb R^{2 \times 2}$ (whose columns consist of generalised eigenvectors of $\vec A$) such that the matrix
+	\label{prop:la:distinct}
+	If
 	\begin{equation*}
-		\vec \Lambda = \vec W^{-1} \vec A \vec W
+		\vec A =
+		\begin{bmatrix}
+			a & 0 \\
+			0 & b
+		\end{bmatrix}
 	\end{equation*}
-	has one of the following forms
+	then
 	\begin{equation*}
-		\Lambda =
-			\begin{bmatrix}
-				\lambda & 0 \\
-				0 		& \mu
-			\end{bmatrix},
-		\Lambda = 
-			\begin{bmatrix}
-				\lambda & 1 \\
-				0 		& \lambda
-			\end{bmatrix}, \text{or }
-		\Lambda = 
+		e^{\vec A} =
+		\begin{bmatrix}
+			e^a & 0 \\
+			0 & e^b
+		\end{bmatrix}
+	\end{equation*}
+\end{proposition}
+
+\begin{proof}
+	By induction
+	\begin{equation*}
+		\vec A^k = 
+		\begin{bmatrix}
+			a^k & 0 \\
+			0 & b^k
+		\end{bmatrix}
+	\end{equation*}
+	for $k = 0, 1, \dotsc$. Then we can write
+	\begin{align*}
+		e^{\vec A} 	&= \sum_{k = 0}^\infty \frac{\vec A^k}{k!} \\
+					&= \sum_{k = 0}^\infty \frac{1}{k!}
+					\begin{bmatrix}
+						a^k & 0 \\
+						0 & b^k
+					\end{bmatrix} \\
+					&= \sum_{k = 0}^\infty
+					\begin{bmatrix}
+						a^k / k!	& 0 \\
+						0 			& b^k / k!
+					\end{bmatrix} \\
+					&= 
+					\begin{bmatrix}
+						e^a & 0 \\
+						0 & e^b
+					\end{bmatrix}
+	\end{align*}
+\end{proof}
+
+\begin{proposition}
+	\label{prop:la:degenerate}
+	If
+	\begin{equation*}
+		\vec A =
+		\begin{bmatrix}
+			a & b \\
+			0 & a
+		\end{bmatrix}
+	\end{equation*}
+	then
+	\begin{equation*}
+		e^{\vec A} = e^a
+		\begin{bmatrix}
+			1 & b \\
+			0 & 1
+		\end{bmatrix}
+	\end{equation*}
+\end{proposition}
+
+\begin{proof}
+	Write $\vec A = a \vec I + \vec B$ where
+	\begin{equation*}
+		\vec B =
+		\begin{bmatrix}
+			0 & b \\
+			0 & 0
+		\end{bmatrix}
+	\end{equation*}
+	Then $a\vec I$ commutes with $\vec B$ and by Proposition~\ref{prop:la:commute},
+	\begin{equation*}
+		e^{\vec A} = e^{a \vec I}e^{\vec B} = e^{a}e^{\vec B}
+	\end{equation*}
+	And from the definition
+	\begin{equation*}
+		e^{\vec B} = \vec I + \vec B + \vec B^2 / 2! + \cdots = \vec I + \vec B
+	\end{equation*}
+	since by direct computation $\vec B^2 = \vec B^3 = \cdots = 0$.
+\end{proof}
+
+\begin{proposition}
+	\label{prop:la:complex}
+	If
+	\begin{equation*}
+		\vec A =
 			\begin{bmatrix}
 				a 	& -b \\
 				b 	& a
 			\end{bmatrix}
 	\end{equation*}
-	It then follows from above that
+	then
 	\begin{equation*}
-		e^{(\Lambda t)} =
+		e^{\vec A} = e^a
+			\begin{bmatrix}
+				\cos b 	& -\sin b \\
+				\sin b 	& \cos b
+			\end{bmatrix}
+	\end{equation*}
+\end{proposition}
+
+\begin{proof}
+	If $\lambda = a + ib$, it follows by induction that
+	\begin{equation*}
+		\begin{bmatrix}
+			a & -b \\
+			b & a
+		\end{bmatrix}^k
+		= 
+		\begin{bmatrix}
+			\Re(\lambda^k) & -\Im(\lambda^k) \\
+			\Im(\lambda^k) & \Re(\lambda^k)
+		\end{bmatrix}
+	\end{equation*}
+	explicitly: it is true for $k = 0$ and assuming true for $k - 1$, we can write
+	\begin{align*}
+		\lambda^{k - 1} &= a_{k - 1} + ib_{k - 1} \\
+		\lambda^k 	&= \lambda^{k - 1} \lambda \\
+					&= (a_{k - 1} + ib_{k - 1})(a + ib) \\
+					&= (a_{k - 1}a - b_{k - 1}b) + i(b_{k - 1}a + a_{k - 1}b)
+	\end{align*}
+	and so
+	\begin{align*}
+		\begin{bmatrix}
+			a & -b \\
+			b & a
+		\end{bmatrix}^k
+		&=
+		\begin{bmatrix}
+			\Re(\lambda^{k - 1}) & -\Im(\lambda^{k - 1}) \\
+			\Im(\lambda^{k - 1}) & \Re(\lambda^{k - 1})
+		\end{bmatrix}
+		\begin{bmatrix}
+			a & -b \\
+			b & a
+		\end{bmatrix} \\
+		&= 
+		\begin{bmatrix}
+			a_{k - 1} & -b_{k - 1} \\
+			b_{k - 1} & a_{k - 1}
+		\end{bmatrix}
+		\begin{bmatrix}
+			a & -b \\
+			b & a
+		\end{bmatrix} \\
+		&=
+		\begin{bmatrix}
+			(a_{k - 1}a - b_{k - 1}b) & (-a_{k - 1}b - b_{k - 1}a) \\
+			(b_{k - 1}a + a_{k - 1}b) & (-b_{k - 1}b + a_{k - 1}a)
+		\end{bmatrix} \\
+		&=
+		\begin{bmatrix}
+			\Re(\lambda^k)	& -\Im(\lambda^k) \\
+			\Im(\lambda^k)	& \Re(\lambda^k)
+		\end{bmatrix}
+	\end{align*}
+
+	Using this
+	\begin{align*}
+		e^{\vec A}
+		&=
+		\sum_{k = 0}^\infty
+		\begin{bmatrix}
+			\Re(\frac{\lambda_k}{k!})	& -\Im(\frac{\lambda_k}{k!}) \\
+			\Im(\frac{\lambda_k}{k!})	& \Re(\frac{\lambda_k}{k!})
+		\end{bmatrix} \\
+		&=
+		\begin{bmatrix}
+			\Re(e^\lambda)	& -\Im(e^\lambda) \\
+			\Im(e^\lambda)	& \Re(e^\lambda)
+		\end{bmatrix} \\
+		&=
+		e^a
+		\begin{bmatrix}
+			\cos b 	& -\sin b \\
+			\sin b 	& \cos b
+		\end{bmatrix}
+	\end{align*}
+\end{proof}
+
+\begin{theorem}[The Jordan Canonical Form]
+	\label{thm:la:jordan}
+	Let $\vec A \in \mathbb R^{2n - k}$ be a real matrix with
+	\begin{itemize}
+		\item real eigenvalues $\lambda_j, j = 1, \dotsc, k$ and
+		\item complex eigenvalues $\lambda_j = a_j + ib_j$ and $\bar \lambda_j = a_j - ib_j, j = k + 1, \dotsc, n$.
+	\end{itemize}
+	Then there exists a basis $\{\vec v_1, \dotsc, \vec v_k, \vec v_{k + 1}, \vec u_{k + 1}, \dotsc, \vec v_n, \vec u_n\}$ for $\mathbb R^{2n - k}$, where
+	\begin{itemize}
+		\item $\vec v_j, j = 1, \dotsc, k$ and
+		\item $\vec u_j + i\vec v_j, j = k + 1, \dotsc, n$
+	\end{itemize}
+	are generalised eigenvectors of $\vec A$ such that the matrix
+	\begin{equation*}
+		\vec W = [\vec v_1, \dotsc, \vec v_k, \vec v_{k + 1}, \vec u_{k + 1}, \dotsc, \vec v_n, \vec u_n]
+	\end{equation*}
+	is invertible and
+	\begin{equation}
+		\vec W^{-1} \vec A \vec W =
+		\begin{bmatrix}
+			\vec J_1 	& 			& \\
+						& \ddots 	& \\
+						&			& \vec J_r
+		\end{bmatrix}
+	\end{equation}
+	where the elementary Jordan blocks $\vec J = \vec J_j, j = 1, \dotsc, r$ are either of the form
+	\begin{equation}
+		\vec B =
+		\begin{bmatrix}
+			\lambda & 1 		& 0 & \cdots 	& 0 \\
+			0 		& \lambda 	& 1 & \cdots 	& 0 \\
+			\cdots 	&			&	&		 	& \\
+			0 		& \cdots 	& 	& \lambda 	& 1 \\
+			0 		& \cdots	&	& 0 		& \lambda
+		\end{bmatrix}
+	\end{equation}
+	for one of the real eigenvalues of $\vec A$, $\lambda$, or of the form
+	\begin{equation}
+		\vec B =
+		\begin{bmatrix}
+			\vec D 	& \vec I	& \vec 0 	& \cdots 	& \vec 0 \\
+			\vec 0 	& \vec D 	& \vec I	& \cdots 	& \vec 0 \\
+			\cdots 	&			&			&		 	& \\
+			\vec 0 	& \cdots 	& 			& \vec D 	& \vec I	\\
+			\vec 0 	& \cdots	&			& \vec 0 	& \vec D
+		\end{bmatrix}
+	\end{equation}
+	with
+	\begin{equation*}
+		\vec D =
+		\begin{bmatrix}
+			a & -b \\
+			b & a
+		\end{bmatrix},
+		\vec I = 
+		\begin{bmatrix}
+			1 & 0 \\
+			0 & 1
+		\end{bmatrix},
+		\vec 0 = 
+		\begin{bmatrix}
+			0 & 0 \\
+			0 & 0
+		\end{bmatrix}
+	\end{equation*}
+	for one of the complex eigenvalues of $\vec A$, $\lambda = a + ib$.
+\end{theorem}
+
+\begin{corollary}
+	For any $\vec A \in \mathbb R^{2 \times 2}$, there exists an invertible matrix $\vec W \in \mathbb R^{2 \times 2}$ (described in the proof) such that the matrix
+	\begin{equation*}
+		\vec \Lambda = \vec W^{-1} \vec A \vec W
+	\end{equation*}
+	has one of the following forms
+	\begin{equation*}
+		\vec \Lambda =
+			\begin{bmatrix}
+				\lambda & 0 \\
+				0 		& \mu
+			\end{bmatrix},
+		\vec \Lambda = 
+			\begin{bmatrix}
+				\lambda & 1 \\
+				0 		& \lambda
+			\end{bmatrix}, \text{or }
+		\vec \Lambda = 
+			\begin{bmatrix}
+				a 	& -b \\
+				b 	& a
+			\end{bmatrix}
+	\end{equation*}
+	It then follows from Propositions \ref{prop:la:distinct}, \ref{prop:la:degenerate} and \ref{prop:la:complex} that
+	\begin{equation*}
+		e^{\vec \Lambda t} =
 			\begin{bmatrix}
 				e^{\lambda t}	& 0 \\
 				0 				& e^{\mu t}
 			\end{bmatrix},
-		e^{(\Lambda t)} = 
+		e^{\vec \Lambda t} = 
 			e^{\lambda t}
 			\begin{bmatrix}
 				1 	& t \\
 				0 	& 1
 			\end{bmatrix}, \text{or }
-		e^{(\Lambda t)} =
+		e^{\vec \Lambda t} =
 			e^{at}
 			\begin{bmatrix}
 				\cos{bt}	& -\sin{bt} \\
@@ -68,4 +333,49 @@
 	\begin{equation*}
 		e^{\vec At} = \vec W e^{\vec \Lambda t} \vec W^{-1}
 	\end{equation*}
-\end{proposition}
+\end{corollary}
+
+\begin{proof}
+	We analyse the Jordan Canonical Form of three possible cases of eigendecomposition of $\vec A \in \mathbb R^{2 \times 2}$ (characteristic equation $|\vec A - \lambda \vec I|$ a quadratic equation in $\lambda$):
+	\begin{enumerate}
+		\item Eigenvalues are real and distinct: $\lambda, \mu$. Eigenvectors are $\vec w_1, \vec w_2$.
+		
+		In this case $n = k = 2$. For the matrix $\vec W = [\vec w_1, \vec w_2]$:
+		\begin{equation*}
+			\vec W^{-1} \vec A \vec W =
+			\begin{bmatrix}
+				J_1 & 0 \\
+				0 & J_2
+			\end{bmatrix}
+		\end{equation*}
+		where $J_1 = \lambda, J_2 = \mu$.
+		\item Eigenvalues are real and equal: $\lambda$. There is only one eigenvector, $\vec w$.
+		
+		In this case $n = k = 2$. For the matrix $\vec W = [\vec w, \vec w]$:
+		\begin{equation*}
+			\vec W^{-1} \vec A \vec W = [\vec J_1]
+		\end{equation*}
+		where
+		\begin{equation*}
+			\vec J_1 = 
+			\begin{bmatrix}
+				\lambda & 1 \\
+				0 & \lambda
+			\end{bmatrix}
+		\end{equation*}
+		\item Eigenvalues are complex conjugates: $\lambda_1 = a + ib, \lambda_2 = a - ib$. Eigenvectors are $\vec w_1 = \vec u + i \vec v, \vec w_2 = \vec u - i \vec v$.
+
+		In this case $k = 0, n = 1$. For the matrix $\vec W = [\vec v, \vec u]$:
+		\begin{equation*}
+			\vec W^{-1} \vec A \vec W = [\vec D]
+		\end{equation*}
+		where
+		\begin{equation*}
+			\vec D =
+			\begin{bmatrix}
+				a & -b \\
+				b & a
+			\end{bmatrix}
+		\end{equation*}
+	\end{enumerate}
+\end{proof}
