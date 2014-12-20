@@ -1,5 +1,20 @@
-\section{Lecture 1 -- Introduction}
+\section{Introduction}
 We have: state $\vec x(t) \in \mathbb R^n$, function $\vec f: D \to \mathbb R^n, D \subseteq \mathbb R^n$. Then a dynamical system can be written as
 \begin{equation}
 	\vec{\dot x} = \vec f(\vec x)
 \end{equation}
+In this lecture course, we assume that the solution exists and is unique locally, i.e. we will assume that the vector fields are sufficiently smooth to allow this.
+
+We call $\vec{\dot x} = \vec A \vec x$ a linear autonomous system.
+\begin{theorem}[The Fundamental Theorem for Linear Systems] % Perko p17
+	\label{thm:lec1:linear}
+	Let $\vec A$ be an $n \times n$ matrix. Then for a given $\vec x_0 \in \mathbb R^n$, the initial value problem
+	\begin{align}
+		\vec{\dot x} 	&= \vec A \vec x \\
+		\vec x(0)		&= \vec x_0
+	\end{align}
+	has a unique solution given by
+	\begin{equation}
+		\vec x(t) = e^{\vec At} \vec x_0
+	\end{equation}
+\end{theorem}

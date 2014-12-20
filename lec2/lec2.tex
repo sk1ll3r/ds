@@ -1,1 +1,154 @@
-\section{Lecture 2 -- Equilibria and stability}
+\section{Equilibria and stability}
+Equilibrium solution of $\dot{\vec x} = \vec f(\vec x)$ is a solution $\vec x^\ast \in \mathbb R^n$ which is constant, i.e. $\vec f(\vec x^\ast) = \vec 0$. $\vec x^\ast$ is called a fixed point, stationary point, rest point, critical point or steady state.
+
+For maps, $\vec x_{k + 1} = \vec F(\vec x_k)$, the equilibrium solution is a solution $\vec x^\ast \in \mathbb R^n$ such that $\vec x^\ast = \vec F(\vec x^\ast)$.
+
+\begin{definition}
+An equilibrium point $\vec x^\ast$ is said to be stable if, given $\epsilon > 0$, there exists a real number $\delta > 0$ such that for any other solution $\vec y(t)$ satisfying $|\vec y(0) - \vec x^\ast| < \delta$, $|\vec y(t) - \vec x^\ast| < \epsilon$ for all $t \geq 0$. Otherwise it is called unstable.
+\end{definition}
+
+\begin{definition}
+	An equilibrium point $\vec x^\ast$ is said to be asymptotically stable if it is stable and there is a $b > 0$ such that if $|\vec y(0) - \vec x^\ast| < b$ then $\lim_{t \to \infty} |\vec y(t) - \vec x^\ast| = 0$.
+\end{definition}
+
+\begin{definition}
+	An equilibrium point $\vec x^\ast$ is said to be exponentially stable if it is asymptotically stable and there exist finite $\alpha, \beta, \delta > 0$ such that if $|\vec y(0) - \vec x^\ast| < \delta$ then $|\vec y(t) - \vec x^\ast| \leq \alpha e^{-\beta t} |\vec y(0) - \vec x^\ast|$ for $t \geq 0$.
+\end{definition}
+
+\subsection{Analysing stability in 2x2 systems}
+In a linear system
+\begin{align*}
+	\dot{\vec x} &= \vec A \vec x \\
+	\vec x(0)	 &= \vec x_0 
+\end{align*}
+where $\vec x \in \mathbb R^2$ where we can decompose $\vec A = \vec W \vec \Lambda \vec W^{-1}$ according to Corollary~\ref{cor:la:linear}, we can use the coordinate transformation $\vec z = \vec W^{-1} \vec x$ and $\vec z_0 = \vec W^{-1} \vec x_0$ to analyse the system in the transformed coordinates $\vec z$:
+\begin{align*}
+	\dot{\vec z} &= \vec \Lambda \vec z \\
+	\vec z(0)	 &= \vec z_0
+\end{align*}
+hence according to Theorem~\ref{thm:lec1:linear}:
+\begin{equation*}
+	\vec z(t) = e^{\vec \Lambda t} \vec z_0
+\end{equation*}
+
+We now analyse the three possible cases of $\vec \Lambda$:
+
+\paragraph{Real, distinct eigenvalues.} We have for $\lambda, \mu, \lambda \neq \mu$:
+\begin{equation*}
+	\vec \Lambda = 
+	\begin{bmatrix}
+		\lambda & 0 \\
+		0 & \mu
+	\end{bmatrix}
+\end{equation*}
+and
+\begin{equation*}
+	e^{\vec \Lambda t} =
+		\begin{bmatrix}
+			e^{\lambda t}	& 0 \\
+			0 				& e^{\mu t}
+		\end{bmatrix}
+\end{equation*}
+hence
+\begin{align*}
+	\vec z(t) 	&= 
+		\begin{bmatrix}
+			e^{\lambda t}	& 0 \\
+			0 				& e^{\mu t}
+		\end{bmatrix}
+		\vec z_0 \\
+				&= z_{1, 0} e^{\lambda t} + z_{2, 0} e^{\mu t}
+\end{align*}
+
+There can be three subcases:
+\begin{itemize}
+	\item $\lambda < \mu < 0$: stable.
+	\item $\lambda < 0 < \mu$: saddle shape (separatrices).
+	\item $0 < \lambda < \mu$: unstable (opposite arrows to stable case).
+\end{itemize}
+
+\paragraph{Duplicate real eigenvalue.} We have for $\lambda \neq 0$:
+\begin{equation*}
+	\vec \Lambda = 
+	\begin{bmatrix}
+		\lambda & 1 \\
+		0 & \lambda
+	\end{bmatrix}
+\end{equation*}
+and
+\begin{equation*}
+	e^{\vec \Lambda t} = 
+		e^{\lambda t}
+		\begin{bmatrix}
+			1 	& t \\
+			0 	& 1
+		\end{bmatrix}
+\end{equation*}
+hence
+\begin{align*}
+	\vec z(t) 	&= 
+		e^{\lambda t}
+		\begin{bmatrix}
+			1 	& t \\
+			0 	& 1
+		\end{bmatrix}
+		\vec z_0
+\end{align*}
+
+There can be two subcases:
+\begin{itemize}
+	\item $\lambda < 0$: stable.
+	\item $\lambda > 0$: unstable.
+\end{itemize}
+
+\paragraph{Complex eigenvalues.} We have for $\lambda_1 = a + ib, \lambda_2 = a - ib$:
+\begin{equation*}
+	\vec \Lambda = 
+	\begin{bmatrix}
+		a & -b \\
+		b & a
+	\end{bmatrix}
+\end{equation*}
+and
+\begin{equation*}
+	e^{\vec \Lambda t} =
+		e^{at}
+		\begin{bmatrix}
+			\cos{bt}	& -\sin{bt} \\
+			\sin{bt}	& \cos{bt}
+		\end{bmatrix}
+\end{equation*}
+hence
+\begin{align*}
+	\vec z(t) 	&= 
+		e^{at}
+		\begin{bmatrix}
+			\cos{bt}	& -\sin{bt} \\
+			\sin{bt}	& \cos{bt}
+		\end{bmatrix}
+		\vec z_0
+\end{align*}
+
+We can look at the norm of $\vec z(t)$ to analyse the shape of the solution:
+\begin{align*}
+	\| \vec z(t) \|^2	&= |e^{at}|^2 \left\|
+							\begin{bmatrix}
+								z_{1, 0}\cos{bt} - z_{2, 0}\sin{bt} \\
+								z_{1, 0}\sin{bt} + z_{2, 0}\cos{bt}
+							\end{bmatrix} \right\|^2 \\
+						&= |e^{at}|^2 (z_{1, 0}^2\cos^2{bt} - 2z_{1, 0}z_{2, 0}\sin{bt}\cos{bt} + z_{2, 0}^2\sin^2{bt} + \\
+							&\,\,\,z_{1, 0}^2\sin^2{bt} + 2z_{1, 0}z_{2, 0}\sin{bt}\cos{bt} + z_{2, 0}^2\cos^2{bt}) \\
+						&= |e^{at}|^2 (z_{1, 0}^2 (\sin^2{bt} + \cos^2{bt}) + z_{2, 0}^2 (\sin^2{bt} + \cos^2{bt})) \\
+						&= |e^{at}|^2 (z_{1, 0}^2 + z_{2, 0}^2) \\
+						&= |e^{at}|^2 \| \vec z_0 \|^2
+\end{align*}
+i.e. $\|\vec z(t)\| = |e^{at}| \|\vec z_0\|$. So
+\begin{itemize}
+	\item $a = 0$: circle.
+	\item $a < 0$: stable spiral.
+	\item $a > 0$: unstable spiral.
+	\item $b > 0$: anticlockwise.
+	\item $b < 0$: clockwise.
+\end{itemize}
+
+\subsection{Nonlinear systems}

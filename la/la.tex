@@ -6,7 +6,7 @@
 	\end{equation}
 \end{definition}
 
-\begin{proposition}
+\begin{proposition} % Perko p13
 	\label{prop:la:commute}
 	If $\vec S$ and $\vec T$ are linear transformations on $\mathbb R^n$ which commute, i.e. $\vec S \vec T = \vec T \vec S$, then $e^{\vec S + \vec T} = e^{\vec S \vec T}$.
 \end{proposition}
@@ -15,7 +15,7 @@
 	Not interesting.
 \end{proof}
 
-\begin{proposition}
+\begin{proposition} % Perko p13
 	\label{prop:la:ptp}
 	If $\vec P, \vec T$ are linear transformations on $\mathbb R^n$ (i.e. $\vec P, \vec T \in \mathbb R^{n \times n}$) and $\vec S = \vec P \vec T \vec P^{-1}$ then $e^{\vec S} = \vec P e^{\vec T} \vec P^{-1}$.
 \end{proposition}
@@ -79,7 +79,7 @@
 	\end{align*}
 \end{proof}
 
-\begin{proposition}
+\begin{proposition} % Perko p14
 	\label{prop:la:degenerate}
 	If
 	\begin{equation*}
@@ -119,7 +119,7 @@
 	since by direct computation $\vec B^2 = \vec B^3 = \cdots = 0$.
 \end{proof}
 
-\begin{proposition}
+\begin{proposition} % Perko p13
 	\label{prop:la:complex}
 	If
 	\begin{equation*}
@@ -218,7 +218,7 @@
 	\end{align*}
 \end{proof}
 
-\begin{theorem}[The Jordan Canonical Form]
+\begin{theorem}[The Jordan Canonical Form] % Perko p39
 	\label{thm:la:jordan}
 	Let $\vec A \in \mathbb R^{2n - k}$ be a real matrix with
 	\begin{itemize}
@@ -286,7 +286,8 @@
 	for one of the complex eigenvalues of $\vec A$, $\lambda = a + ib$.
 \end{theorem}
 
-\begin{corollary}
+\begin{corollary} % Perko p14
+	\label{cor:la:linear}
 	For any $\vec A \in \mathbb R^{2 \times 2}$, there exists an invertible matrix $\vec W \in \mathbb R^{2 \times 2}$ (described in the proof) such that the matrix
 	\begin{equation*}
 		\vec \Lambda = \vec W^{-1} \vec A \vec W
