@@ -152,3 +152,33 @@ i.e. $\|\vec z(t)\| = |e^{at}| \|\vec z_0\|$. So
 \end{itemize}
 
 \subsection{Nonlinear systems}
+Consider $\dot{\vec x} = \vec f(\vec x)$ with an equilibrium $\vec x^\ast$, such that $\vec f(\vec x^\ast) = \vec 0$. Let $\vec x = \vec x^\ast + \vec w$ and assume $\vec f$ is differentiable and not that the equilibrium point doesn't change with time. Then for $j = 1, \dotsc, n$:
+\begin{equation*}
+	f_j(\vec x + \vec w) = f_j(\vec x^\ast) + (\grad_{\vec x} f_j(\vec x^\ast))^T \vec w + \cdots
+\end{equation*}
+
+Hence we can write
+\begin{equation*}
+	\dot{\vec x} = \dot{\vec w} = D\{\vec x^\ast\} \vec w + \cdots
+\end{equation*}
+where
+\begin{equation*}
+	D\{\vec f(\vec x^\ast)\} =
+		\begin{bmatrix}
+			(\grad_{\vec x} f_1(\vec x^\ast))^T \\
+			\vdots \\
+			(\grad_{\vec x} f_n(\vec x^\ast))^T \\
+		\end{bmatrix} \in \mathbb R^{n \times n}
+\end{equation*}
+Hence we can analyse the following small perturbation model
+\begin{equation*}
+	\dot{\vec w} \approx D\{\vec x^\ast\} \vec w = \vec A \vec w
+\end{equation*}
+
+\begin{definition}
+	Let $\vec x^\ast$ be an equilibrium of $\dot{\vec x} = \vec f(\vec x)$. Then $\vec x^\ast$ is called a hyperbolic fixed point if none of the eigenvalues of $D\vec f(\vec x^\ast)$ have zero real part.
+\end{definition}
+
+\begin{theorem}
+	Suppose $\vec x^\ast$ is a hyperbolic fixed point and all the real parts of the eigenvalues are negative. Then the equilibrium solution $\vec x = \vec x^\ast$ is asymptotically stable.
+\end{theorem}
