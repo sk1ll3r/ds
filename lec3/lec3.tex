@@ -1,3 +1,148 @@
 \section{Invariant Manifolds}
 \subsection{Linear systems: Stable, Unstable and Centre subspaces}
+In an $n \times n$ linear system
+\begin{equation*}
+	\dot{\vec x} = \vec A \vec x
+\end{equation*}
+if $\vec A \in \mathbb R^n, n = 2m - k$ is eigendecomposed to
+\begin{itemize}
+ 	\item real eigenvalues $\lambda_j = a_j$ with corresponding eigenvectors $\vec w_j = \vec u_j, \vec v_j = \vec 0$ for $j = 1, \dotsc, k$, and
+ 	\item complex eigenvalues $\lambda_j = a_j + ib_j$ and $\bar \lambda_j = a_j - ib_j$ with corresponding eigenvectors $\vec w_j = \vec u_j + i\vec v_j$ and $\vec w_j = \vec u_j - i\vec v_j$ for $j = k + 1, \dotsc, m$
+\end{itemize}
+then
+\begin{align*}
+	\vec W 			&= [\vec u_1, \dotsc, \vec u_k, \vec v_{k + 1}, \vec u_{k + 1}, \dotsc, \vec v_n, \vec u_n] \\
+	\vec \Lambda 	&= \vec W^{-1} \vec A \vec W \\
+					&=
+						\begin{bmatrix}
+							\vec J_1 	& 			& \\
+										& \ddots 	& \\
+										&			& \vec J_r
+						\end{bmatrix}
+\end{align*}
+by Theorem~\ref{thm:la:jordan}.
+
+\begin{definition}
+	$E^s, E^c$ and $E^u$ are the subspaces of $\mathbb R^n$ spanned by the real and imaginary parts of the generalised eigenvectors corresponding to eigenvalues with negative, zero and positive real parts respectively:
+	\begin{align*}
+		E^s &= \span\{\vec u_j, \vec v_j: a_j < 0\} \\
+		E^u &= \span\{\vec u_j, \vec v_j: a_j > 0\} \\
+		E^c &= \span\{\vec u_j, \vec v_j: a_j = 0\}
+	\end{align*}
+\end{definition}
+
+\begin{definition}
+	If all eigenvalues of the $n \times n$ matrix $\vec A$ have nonzero real part, then the flow $e^{\vec A t}: \mathbb R^n \to \mathbb R^n$ (mapping $\vec x_0$ to $\vec x(t)$) is called a hyperbolic flow and $\dot{\vec x} = \vec A \vec x$ is called a hyperbolic linear system.
+\end{definition}
+
+\begin{definition}
+	A subspace $E \subseteq \mathbb R^n$ is said to be invariant with respect to the flow $e^{\vec At}$ if for any $\vec x \in E$: $e^{\vec At}\vec x \in E, \forall t$ (in other words, $E$ is closed under the linear transformation $e^{\vec At}$ for all $t$; or: what starts in $E$ stays in $E$).
+\end{definition}
+
+\begin{theorem}
+	Let $\vec A$ be a real $n \times n$ matrix. Then
+	\begin{equation*}
+		\mathbb R^n = E^s \oplus E^u \oplus E^c
+	\end{equation*}
+	where $E^s$, $E^u$ and $E^c$ are the stable, unstable and center subspaces of $\dot{\vec x} = \vec A \vec x$ respectively; furthermore, $E^s$, $E^u$ and $E^c$ are invariant with respect to the flow $e^{\vec At}$ of $\dot{\vec x} = \vec A \vec x$ respectively.
+\end{theorem}
+
+\begin{proof}
+	(fake (Perko p55 for the real deal)) Let
+	\begin{align*}
+		\{\vec w_i^s, i = 1, \dotsc, n_s\} = \{\vec u_j, \vec v_j: a_j < 0, \vec u_j, \vec v_j \neq \vec 0\} \\
+		\{\vec w_i^u, i = 1, \dotsc, n_u\} = \{\vec u_j, \vec v_j: a_j > 0, \vec u_j, \vec v_j \neq \vec 0\} \\
+		\{\vec w_i^c, i = 1, \dotsc, n_c\} = \{\vec u_j, \vec v_j: a_j = 0, \vec u_j, \vec v_j \neq \vec 0\} 
+	\end{align*}
+	then we can rearrange (questionable) $\vec W$ and $\vec \Lambda$ in the following way
+	\begin{align*}
+		\vec W 			&= [\vec w_1^s, \dotsc, \vec w_{n_s}^s, \vec w_1^u, \dotsc, \vec w_{n_u}^u, \vec w_1^c, \dotsc, \vec w_{n_c}^c] \\
+		\vec \Lambda 	&= 
+							\begin{bmatrix}
+								\vec J_1^s \\
+											& \ddots \\
+											&			& \vec J_r^s \\
+											&			&				& \vec J_1^u \\
+											&			&				&				& \ddots \\
+											&			&				&				&			& \vec J_r^u \\
+											&			&				&				&			&				& \vec J_1^c \\
+											&			&				&				&			&				&				& \ddots \\
+											&			&				&				&			&				&				&			& \vec J_r^c
+							\end{bmatrix} \\
+						&=
+							\begin{bmatrix}
+								\vec \Lambda^s \\
+												& \vec \Lambda^u \\
+												&					& \vec \Lambda^c
+							\end{bmatrix}
+	\end{align*}
+	where $\vec \Lambda^s \in \mathbb R^{n_s \times n_s}$, $\vec \Lambda^u \in \mathbb R^{n_u \times n_u}$ and $\vec \Lambda^c \in \mathbb R^{n_c \times n_c}$ such that $\vec \Lambda = \vec W^{-1} \vec A \vec W$ still holds.
+
+	Using the coordinate transformation $\vec z = \vec W^{-1} \vec x$, we get $\dot{\vec z} = \vec \Lambda \vec z$ hence
+	\begin{align*}
+		\dot{\vec z}^s &= \vec \Lambda^s \vec z^s \\
+		\dot{\vec z}^u &= \vec \Lambda^u \vec z^u \\
+		\dot{\vec z}^c &= \vec \Lambda^c \vec z^c \\
+	\end{align*}
+	where
+	\begin{align*}
+		\vec z^s 	&= [z_1, \dotsc, z_{n_s}]^T \\
+					&= [z_1^s, \dotsc, z_{n_s}^s]^T \\
+		\vec z^u 	&= [z_{n_s + 1}, \dotsc, z_{n_s + n_u}]^T \\
+					&= [z_1^u, \dotsc, z_{n_u}^u]^T \\
+		\vec z^c 	&= [z_{n_s + n_u + 1}, \dotsc, z_{n_s + n_u + n_c}]^T \\
+					&= [z_1^c, \dotsc, z_{n_c}^c]^T 
+	\end{align*}
+
+	Fix $\vec x_0 \in E^s$. We can then write (questionable)
+	\begin{align*}
+		\vec x_0 	&= \vec W \vec z(0) \\
+					&= \sum_{i = 1}^{n_s} \vec w_i^s z_i^s(0) + \sum_{j = 1}^{n_u} \vec w_j^u z_j^u(0) + \sum_{k = 1}^{n_c} \vec w_k^c z_k^c(0) \\
+					&= \sum_{i = 1}^{n_s} \vec w_i^s z_i^s(0) + \vec 0 + \vec 0
+	\end{align*}
+	hence (questionable) $\vec z^u(0) = \vec z^c(0) = \vec 0$. The solution in $\vec z(t)$ then becomes
+	\begin{align*}
+		\vec z^s(t) &= e^{\vec \Lambda^s t} \vec z^s(0) \\
+		\vec z^u(t) &= \vec 0 \\
+		\vec z^c(t) &= \vec 0
+	\end{align*}
+	which corresponds to
+	\begin{align*}
+		\vec x(t) 	&= \vec W \vec z(t) \\
+					&= \sum_{i = 1}^{n_s} \vec w_i^s z_i^s(t) + \sum_{j = 1}^{n_u} \vec w_j^u z_j^u(t) + \sum_{k = 1}^{n_c} \vec w_k^c z_k^c(t) \\
+					&= \sum_{i = 1}^{n_s} \vec w_i^s z_i^s(t) + \vec 0 + \vec 0
+	\end{align*}
+	which is $\in E^s$. Hence $E^s$ is with respect to the flow $e^{\vec At}$. Similarly for $E^u$ and $E^c$.
+\end{proof}
+
+\begin{theorem}
+	If $\vec x_0 \in E^s$, then $e^{\vec At}\vec x_0 \in E^s$ for all $t \in \mathbb R$ and
+	\begin{equation*}
+		\lim_{t \to \infty} e^{\vec At} \vec x_0 = \vec 0.
+	\end{equation*}
+	And if $\vec x_0 \in E^u$, then $e^{\vec At}\vec x_0 \in E^u$ for all $t \in \mathbb R$ and
+	\begin{equation*}
+		\lim_{t \to -\infty} e^{\vec At} \vec x_0 = \vec 0.
+	\end{equation*}
+\end{theorem}
+
 \subsection{Nonlinear system local theory}
+Consider the linearised model
+\begin{equation*}
+	\dot{\vec w} \approx D\{\vec x^\ast\} \vec w = \vec A \vec w
+\end{equation*}
+
+\begin{theorem}[Hartman-Grobman]
+	$\forall$ hyperbolic equilibrium points $\vec x^\ast \in A$ ($A$ is an open set)
+
+	$\exists$ bi-continuous (a mapping that is continous and whose inverse is also continuous) function $H: A \to B$ where
+
+	$B$ is the open set containing the origin of the linearised model
+
+	so that trajectories are mapped exactly and the parameterisation of time is preserved.
+\end{theorem}
+
+\subsection{Conservative systems}
+If there exists a non-constant function $V(\vec x)$ such that $\mathrm dV / \mathrm dt = 0$ along a solution of the nonlinear differential equation $\dot{\vec x} = \vec f(\vec x)$, the equations are called conservative.
+
+If $\vec x = \vec x^\ast$ is an isolated equlibrium and there is a $V(\vec x)$ that is a local minimum/maximum at $\vec x^\ast$ then there is a region around that point that contains a \emph{closed orbit}.

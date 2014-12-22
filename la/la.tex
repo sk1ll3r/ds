@@ -220,7 +220,7 @@
 
 \begin{theorem}[The Jordan Canonical Form] % Perko p39
 	\label{thm:la:jordan}
-	Let $\vec A \in \mathbb R^{2n - k}$ be a real matrix with
+	Let $\vec A \in \mathbb R^{(2n - k) \times (2n - k)}$ be a real matrix with
 	\begin{itemize}
 		\item real eigenvalues $\lambda_j, j = 1, \dotsc, k$ and
 		\item complex eigenvalues $\lambda_j = a_j + ib_j$ and $\bar \lambda_j = a_j - ib_j, j = k + 1, \dotsc, n$.
@@ -236,6 +236,7 @@
 	\end{equation*}
 	is invertible and
 	\begin{equation}
+		\vec \Lambda = 
 		\vec W^{-1} \vec A \vec W =
 		\begin{bmatrix}
 			\vec J_1 	& 			& \\
@@ -245,7 +246,7 @@
 	\end{equation}
 	where the elementary Jordan blocks $\vec J = \vec J_j, j = 1, \dotsc, r$ are either of the form
 	\begin{equation}
-		\vec B =
+		\vec J =
 		\begin{bmatrix}
 			\lambda & 1 		& 0 & \cdots 	& 0 \\
 			0 		& \lambda 	& 1 & \cdots 	& 0 \\
@@ -256,7 +257,7 @@
 	\end{equation}
 	for one of the real eigenvalues of $\vec A$, $\lambda$, or of the form
 	\begin{equation}
-		\vec B =
+		\vec J =
 		\begin{bmatrix}
 			\vec D 	& \vec I	& \vec 0 	& \cdots 	& \vec 0 \\
 			\vec 0 	& \vec D 	& \vec I	& \cdots 	& \vec 0 \\

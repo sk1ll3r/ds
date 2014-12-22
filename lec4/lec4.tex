@@ -1,1 +1,23 @@
 \section{Lyapunov Functions}
+\begin{theorem}
+	Consider a nonlinear system of the form
+	\begin{equation*}
+		\dot{\vec x} = \vec f(\vec x)
+	\end{equation*}
+	and let $\vec x^\ast$ be an equilibrium point, i.e. $\vec f(\vec x^\ast) = \vec 0$.
+	Let $V: D \to \mathbb R$ (unrelated to $V$ in conservative systems) be a continuously differentiable function, defined on a neighbourhood $D$ of (open set containing) $\vec x^\ast$ such that
+	\begin{itemize}
+		\item $V(\vec x^\ast) = 0$ and $V(\vec x) > 0$ if $x \neq x^\ast$.
+		\item $\dot V(\vec x) = (\grad_{\vec x} V(\vec x))^T \vec f(\vec x) \leq 0$ in $D \setminus \{\vec x^\ast\}$.
+	\end{itemize}
+	Then $\vec x^\ast$ is stable. If moreover
+	\begin{itemize}
+		\item $\dot V(\vec x) < 0$ in $D \setminus \{\vec x^\ast\}$.
+	\end{itemize}
+	then $\vec x^\ast$ is asymptotically stable.
+\end{theorem}
+
+\subsection{Vector fields possesing an integral}
+\subsection{Hamiltonian Systems}
+\subsection{Gradient Systems}
+\subsection{A relationship between Gradient and Hamiltonian Systems}
