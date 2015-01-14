@@ -19,5 +19,38 @@
 
 \subsection{Vector fields possesing an integral}
 \subsection{Hamiltonian Systems}
+Let $\vec x, y \in \mathbb R^n$, and $H = H(\vec x, \vec y)$. A system of the form
+\begin{align*}
+	\dot{\vec x} &= \frac{\partial H}{\partial \vec y} \\
+	\dot{\vec y} &= -\frac{\partial H}{\partial \vec x},
+\end{align*}
+is called a \emph{Hamiltonian} system with $n$ degrees of freedom.
+
+\begin{theorem}[Conservation of Energy]
+	The total energy $H(\vec x, \vec y)$ of a Hamiltonian system remains constant along its trajectories.
+\end{theorem}
+
+\begin{proof}
+	The total derivative of the Hamiltonian function $H(\vec x, \vec y)$ along a solution trajectory $\vec x(t), \vec y(t)$ is
+	\begin{align*}
+		\frac{\mathrm dH}{\mathrm dt} 	&= \frac{\partial H}{\partial \vec x} \cdot \dot{\vec x} + \frac{\partial H}{\partial \vec y} \cdot \dot{\vec y} \\
+										&= \frac{\partial H}{\partial \vec x} \cdot \frac{\partial H}{\partial \vec y} - \frac{\partial H}{\partial \vec y} \cdot \frac{\partial H}{\partial \vec x} \\
+										&= 0
+	\end{align*}
+\end{proof}
+
 \subsection{Gradient Systems}
+A system of the form
+\begin{equation}
+	\dot{\vec x} = -\grad{V(\vec x)}
+\end{equation}
+is called a \emph{gradient system}.
+
+\begin{theorem}
+	At regular points of the function $V(\vec x)$, trajectories of a gradient system cross the level surfaces $V(\vec x) = \text{constant}$ orthogonally. And strict local minima of the function $V(\vec x)$ are asymptotically stable equilibrium points of this gradient system.
+\end{theorem}
+
+Also, $V(\vec x) - V(\vec x_0)$ is a strict Lyapunov function for this system, where $\vec x_0$ is a strict local minimum of $V(\vec x)$.
+
 \subsection{A relationship between Gradient and Hamiltonian Systems}
+They are orthogonal.

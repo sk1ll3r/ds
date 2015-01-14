@@ -159,7 +159,7 @@ Consider $\dot{\vec x} = \vec f(\vec x)$ with an equilibrium $\vec x^\ast$, such
 
 Hence we can write
 \begin{equation*}
-	\dot{\vec x} = \dot{\vec w} = D\{\vec x^\ast\} \vec w + \cdots
+	\dot{\vec x} = \dot{\vec w} = D\{\vec f(\vec x^\ast)\} \vec w + \cdots
 \end{equation*}
 where
 \begin{equation*}
@@ -172,11 +172,11 @@ where
 \end{equation*}
 Hence we can analyse the following small perturbation model
 \begin{equation*}
-	\dot{\vec w} \approx D\{\vec x^\ast\} \vec w = \vec A \vec w
+	\dot{\vec w} \approx D\{\vec f(\vec x^\ast)\} \vec w = \vec A \vec w
 \end{equation*}
 
 \begin{definition}
-	Let $\vec x^\ast$ be an equilibrium of $\dot{\vec x} = \vec f(\vec x)$. Then $\vec x^\ast$ is called a hyperbolic fixed point if none of the eigenvalues of $D\vec f(\vec x^\ast)$ have zero real part.
+	Let $\vec x^\ast$ be an equilibrium of $\dot{\vec x} = \vec f(\vec x)$. Then $\vec x^\ast$ is called a hyperbolic fixed point if none of the eigenvalues of $D\{\vec f(\vec x^\ast)\}$ have zero real part.
 \end{definition}
 
 \begin{theorem}

@@ -25,9 +25,9 @@ by Theorem~\ref{thm:la:jordan}.
 \begin{definition}
 	$E^s, E^c$ and $E^u$ are the subspaces of $\mathbb R^n$ spanned by the real and imaginary parts of the generalised eigenvectors corresponding to eigenvalues with negative, zero and positive real parts respectively:
 	\begin{align*}
-		E^s &= \span\{\vec u_j, \vec v_j: a_j < 0\} \\
-		E^u &= \span\{\vec u_j, \vec v_j: a_j > 0\} \\
-		E^c &= \span\{\vec u_j, \vec v_j: a_j = 0\}
+		E^s &= \spn\{\vec u_j, \vec v_j: a_j < 0\} \\
+		E^u &= \spn\{\vec u_j, \vec v_j: a_j > 0\} \\
+		E^c &= \spn\{\vec u_j, \vec v_j: a_j = 0\}
 	\end{align*}
 \end{definition}
 
@@ -129,7 +129,7 @@ by Theorem~\ref{thm:la:jordan}.
 \subsection{Nonlinear system local theory}
 Consider the linearised model
 \begin{equation*}
-	\dot{\vec w} \approx D\{\vec x^\ast\} \vec w = \vec A \vec w
+	\dot{\vec w} \approx D\{\vec f(\vec x^\ast)\} \vec w = \vec A \vec w
 \end{equation*}
 
 \begin{theorem}[Hartman-Grobman]
