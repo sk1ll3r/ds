@@ -12,3 +12,54 @@ within some open set $D$ around the point $\vec x_0$. We require the solution to
 \begin{equation*}
     \Gamma_{\vec x_0} = \{\vec x \in D: \vec x = \phi(t, \vec x_0), t \in R\}.
 \end{equation*}
+
+\begin{definition}
+    A point $p \in D$ is called an $\omega$ limit point of the trajectory $\phi(t, x)$ if there exists a sequence of times, $\{t_i\}, t_i \to \infty$ such that
+    \begin{equation}
+        \lim_{i \to \infty} \phi(t_i, x) \to p.
+    \end{equation}
+    We denote this point $\omega(x)$. $\alpha$ limit points are defined in a similar way but now the sequence $\{t_i\}$ is such that $t_i \to \infty$.
+
+    The $\alpha$ limit set of a trajectory is the set of all $\alpha$ limit points. Similarly, we can define the $\omega$ limit set.
+\end{definition}
+
+\begin{definition}[Positively invariant set]
+    Define the positive path $\Gamma_{x_0}^+ := \{x \in D: x = \phi(t, x_0), t \geq 0\}$. Set $S \subseteq D$ is called positively invariant if $x_0 \in S$ implies $\Gamma_{x_0}^+ \subseteq S$.
+\end{definition}
+
+\begin{definition}[Attracting set]
+    An invariant set $A \subset D$ is attracting if there is some neighbourhood $U$ of $A$ which is positively invariant and all trajectories starting in $U$ tend to $A$ as $t \to \infty$.
+\end{definition}
+
+\begin{definition}[Trapping region (informal)]
+    Trapping region is a region such that every trajectory that starts within the trapping region will move to the region's interior and remain there as the system evolves.
+
+    Let $\dot x = f(x)$ with $x \in \mathbb R^n$ and suppose $S \subset \mathbb R^n$ is a positively invariant set. Suppose the boundry of $S$ is differentiable and $S$ has non-empty interior. S is a trapping region.
+\end{definition}
+
+\begin{definition}[Basin of attraction]
+    The \emph{domain} or \emph{basin} of attraction of an attracting set $A$ is the union of all trajectories forming a trapping region of $A$.
+\end{definition}
+
+\begin{theorem}[La Salle's invariance principle]
+    Let $D$ be a trapping region. Suppose now there exists $V(x)$ which satisfies $\dot V \leq 0$ on $D$ and consider the following two sets:
+    \begin{equation}
+        E = \{x \in D : \dot V(x) = 0\}
+    \end{equation}
+    and
+    \begin{equation}
+        M = \{\text{the union of all trajectories in $E$ that are positively invariant}\}.
+    \end{equation}
+    La Salle's invariance principle then states that for all $x \in D$, all trajectories starting at $x$ tend to $M$ as $t \to \infty$.
+\end{theorem}
+
+\begin{theorem}[Poincar\'e-Bendixson]
+    Let $M$ be a positively invariant region of a vector field, containing only a finite number of equilibria. Let $x \in M$ and consider $\omega(x)$. Then one of the following possibilities holds:
+    \begin{enumerate}
+        \item $\omega(x)$ is an equilibrium;
+        \item $\omega(x)$ is a closed orbit;
+        \item $\omega(x)$ consists of a finite number of equilibria $x_1^\ast, \dotsc, x_n^\ast$ and orbits $\gamma_k$ with $\alpha(\gamma_k) = x_i^\ast$ and $\omega(\gamma_k) = x_j^\ast$ for some $i, j$. i.e. connected set composed of a finite number of fixed points together with homoclinic and heteroclinic orbits connecting these.
+    \end{enumerate}
+\end{theorem}
+
+As a result, if inside $M$ there are only stable equilibria, then there can only be one. If there are no equilibria, then there is a closed orbit inside it.

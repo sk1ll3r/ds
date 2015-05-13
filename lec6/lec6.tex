@@ -1,1 +1,52 @@
 \section{Limit Cycles and Index Theory}
+\begin{definition}[Periodic orbit]
+    A solution of $\dot x = f(x)$ through $x_0$ is said to be periodic if there exists a $T > 0$ such that $\phi(t, x_0) = \phi(t + T, x_0)$ for all $t \in \mathbb R$. The minimum such $T$ is called a period of the periodic orbit.
+\end{definition}
+
+\begin{theorem}[Bendixson]
+    If $\frac{\partial f}{\partial x} + \frac{\partial g}{\partial y}$ is not identically $0$ and does not change sign on a region $D$ of the phase-plane, then
+    \begin{equation}
+        \dot x = f(x, y) \\
+        \dot y = g(x, y)
+    \end{equation}
+    has no closed orbits in this region.
+\end{theorem}
+
+\begin{theorem}[Dulac]
+    Let $B(x, y)$ be a continuously differentiable function, defined on a region $D \in \mathbb R^2$. If $\frac{\partial{(Bf)}}{\partial x} + \frac{\partial{(Bg)}}{\partial y}$ is not identically $0$ and does not change sign on a region $D$ of the phase-plane, then
+    \begin{equation}
+        \dot x = f(x, y) \\
+        \dot y = g(x, y)
+    \end{equation}
+    has no closed orbits in this region.
+\end{theorem}
+
+\begin{claim}
+    A gradient system has no closed orbits.
+\end{claim}
+
+Index of a simple closed curve $\Gamma \in \mathbb R^2$, the index of $\Gamma$, $I(\Gamma)$ is defined by
+\begin{equation}
+    I(\Gamma) = \oint_{\Gamma} \frac{d \varphi(x_1, x_2)}{2 \pi}
+\end{equation}
+Index theory properties:
+\begin{enumerate}
+    \item The index is always an integer.
+    \item If there are no fixed points in the interior of a simple closed curve $\Gamma$ then $I(\Gamma) = 0$.
+    \item If $\Gamma$ is a closed orbit of the system then $I(\Gamma) = 1$.
+    \item Let $\Gamma$ encircle counterclockwisely an isolated fixed point $x^\ast$. If $x^\ast$ is a saddle node, then $I(\Gamma) = -1$, otherwise $I(\Gamma) = 1$. In the case of fixed points, we also identify $I(\Gamma)$ with $I(x^\ast$.
+    \item The index of a curve $\Gamma$ surrounding a number of fixed points $x_1^\ast, \dotsc, x_n^\ast$ is
+        \begin{equation}
+            I(\Gamma) = \sum_{k = 1}^n I(x_k^\ast)
+        \end{equation}
+    \item The index of a closed trajectory enclosing fixed points $x_1^\ast, \dotsc, x_n^\ast$ is
+        \begin{equation}
+            I(\Gamma) = \sum_{k = 1}^n I(x_k^\ast) = 1.
+        \end{equation}
+\end{enumerate}
+
+\begin{definition}[Stability of periodic orbits]
+    A periodic orbit $\Gamma$ is said to be stable if for every $\epsilon > 0$ there is a neighbourhood $U$ of $\Gamma$ such that for all $x \in U$, the distance between $\phi(t, x)$ and $\Gamma$ is less than $\epsilon$. Moreover, $\Gamma$ is called asymptotically stable, if it is stable and if for all points $x \in U$ we have that this distance tends to zero as $t \to \infty$.
+\end{definition}
+
+An asymptotically stable cycle is referred to as an $\omega$-limit cycle.

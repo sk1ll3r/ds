@@ -7,8 +7,8 @@
 	and let $\vec x^\ast$ be an equilibrium point, i.e. $\vec f(\vec x^\ast) = \vec 0$.
 	Let $V: D \to \mathbb R$ (unrelated to $V$ in conservative systems) be a continuously differentiable function, defined on a neighbourhood $D$ of (open set containing) $\vec x^\ast$ such that
 	\begin{itemize}
-		\item $V(\vec x^\ast) = 0$ and $V(\vec x) > 0$ if $x \neq x^\ast$.
-		\item $\dot V(\vec x) = (\grad_{\vec x} V(\vec x))^T \vec f(\vec x) \leq 0$ in $D \setminus \{\vec x^\ast\}$.
+		\item $V(\vec x^\ast) = 0$ and $V(\vec x) > 0$ for $\vec x \neq \vec x^\ast$.
+		\item $\dot V(\vec x) = (\grad_{\vec x} V(\vec x))^T \vec f(\vec x) \leq 0$ for all $\vec x \in D \setminus \{\vec x^\ast\}$.
 	\end{itemize}
 	Then $\vec x^\ast$ is stable. If moreover
 	\begin{itemize}
@@ -19,7 +19,7 @@
 
 \subsection{Vector fields possesing an integral}
 \subsection{Hamiltonian Systems}
-Let $\vec x, y \in \mathbb R^n$, and $H = H(\vec x, \vec y)$. A system of the form
+Let $\vec x, \vec y \in \mathbb R^n$, and $H = H(\vec x, \vec y)$. A system of the form
 \begin{align*}
 	\dot{\vec x} &= \frac{\partial H}{\partial \vec y} \\
 	\dot{\vec y} &= -\frac{\partial H}{\partial \vec x},
