@@ -2,7 +2,7 @@
 \begin{definition}
 	Let $\vec A$ be an $n \times n$ matrix. Then
 	\begin{equation}
-		e^{\vec A} = \sum_{k = 0}^\infty \frac{\vec A^k}{k!}
+		e^{\vec A} = \sum_{k = 0}^\infty \frac{\vec A^k}{k!}.
 	\end{equation}
 \end{definition}
 
@@ -24,8 +24,8 @@
 	\begin{align*}
 		e^{\vec S} 	&= \lim_{n \to \infty} \sum_{k = 0}^n \frac{(\vec P \vec T \vec P^{-1})^k}{k!} \\
 						&= \lim_{n \to \infty} \sum_{k = 0}^n \frac{\vec P \vec T^k \vec P^{-1}}{k!} \\
-						&= \vec P \left(\lim_{n \to \infty} \sum_{k = 0}^n \frac{T^k}{k!} \right) \vec P^{-1} \\
-						&= \vec P e^{\vec T} \vec P^{-1}
+						&= \vec P \left(\lim_{n \to \infty} \sum_{k = 0}^n \frac{\vec T^k}{k!} \right) \vec P^{-1} \\
+						&= \vec P e^{\vec T} \vec P^{-1}.
 	\end{align*}
 \end{proof}
 
@@ -37,7 +37,7 @@
 		\begin{bmatrix}
 			a & 0 \\
 			0 & b
-		\end{bmatrix}
+		\end{bmatrix},
 	\end{equation*}
 	then
 	\begin{equation*}
@@ -45,18 +45,18 @@
 		\begin{bmatrix}
 			e^a & 0 \\
 			0 & e^b
-		\end{bmatrix}
+		\end{bmatrix}.
 	\end{equation*}
 \end{proposition}
 
 \begin{proof}
-	By induction
+	Let
 	\begin{equation*}
 		\vec A^k = 
 		\begin{bmatrix}
 			a^k & 0 \\
 			0 & b^k
-		\end{bmatrix}
+		\end{bmatrix},
 	\end{equation*}
 	for $k = 0, 1, \dotsc$. Then we can write
 	\begin{align*}
@@ -87,7 +87,7 @@
 		\begin{bmatrix}
 			a & b \\
 			0 & a
-		\end{bmatrix}
+		\end{bmatrix},
 	\end{equation*}
 	then
 	\begin{equation*}
@@ -95,7 +95,7 @@
 		\begin{bmatrix}
 			1 & b \\
 			0 & 1
-		\end{bmatrix}
+		\end{bmatrix}.
 	\end{equation*}
 \end{proposition}
 
@@ -106,15 +106,15 @@
 		\begin{bmatrix}
 			0 & b \\
 			0 & 0
-		\end{bmatrix}
+		\end{bmatrix}.
 	\end{equation*}
 	Then $a\vec I$ commutes with $\vec B$ and by Proposition~\ref{prop:la:commute},
 	\begin{equation*}
-		e^{\vec A} = e^{a \vec I}e^{\vec B} = e^{a}e^{\vec B}
+		e^{\vec A} = e^{a \vec I}e^{\vec B} = e^{a}e^{\vec B}.
 	\end{equation*}
 	And from the definition
 	\begin{equation*}
-		e^{\vec B} = \vec I + \vec B + \vec B^2 / 2! + \cdots = \vec I + \vec B
+		e^{\vec B} = \vec I + \vec B + \vec B^2 / 2! + \cdots = \vec I + \vec B,
 	\end{equation*}
 	since by direct computation $\vec B^2 = \vec B^3 = \cdots = 0$.
 \end{proof}
@@ -127,7 +127,7 @@
 			\begin{bmatrix}
 				a 	& -b \\
 				b 	& a
-			\end{bmatrix}
+			\end{bmatrix},
 	\end{equation*}
 	then
 	\begin{equation*}
@@ -135,7 +135,7 @@
 			\begin{bmatrix}
 				\cos b 	& -\sin b \\
 				\sin b 	& \cos b
-			\end{bmatrix}
+			\end{bmatrix}.
 	\end{equation*}
 \end{proposition}
 
@@ -150,14 +150,14 @@
 		\begin{bmatrix}
 			\Re(\lambda^k) & -\Im(\lambda^k) \\
 			\Im(\lambda^k) & \Re(\lambda^k)
-		\end{bmatrix}
+		\end{bmatrix}.
 	\end{equation*}
-	explicitly: it is true for $k = 0$ and assuming true for $k - 1$, we can write
+	Explicitly: it is true for $k = 0$ and assuming true for $k - 1$, we can write
 	\begin{align*}
-		\lambda^{k - 1} &= a_{k - 1} + ib_{k - 1} \\
+		\lambda^{k - 1} &:= a_{k - 1} + ib_{k - 1}, \\
 		\lambda^k 	&= \lambda^{k - 1} \lambda \\
 					&= (a_{k - 1} + ib_{k - 1})(a + ib) \\
-					&= (a_{k - 1}a - b_{k - 1}b) + i(b_{k - 1}a + a_{k - 1}b)
+					&= (a_{k - 1}a - b_{k - 1}b) + i(b_{k - 1}a + a_{k - 1}b),
 	\end{align*}
 	and so
 	\begin{align*}
@@ -167,13 +167,22 @@
 		\end{bmatrix}^k
 		&=
 		\begin{bmatrix}
+			a & -b \\
+			b & a
+		\end{bmatrix}^{k - 1}
+		\begin{bmatrix}
+			a & -b \\
+			b & a
+		\end{bmatrix} \\
+		&=
+		\begin{bmatrix}
 			\Re(\lambda^{k - 1}) & -\Im(\lambda^{k - 1}) \\
 			\Im(\lambda^{k - 1}) & \Re(\lambda^{k - 1})
 		\end{bmatrix}
 		\begin{bmatrix}
 			a & -b \\
 			b & a
-		\end{bmatrix} \\
+		\end{bmatrix}  & \text{(inductive assumption)} \\
 		&= 
 		\begin{bmatrix}
 			a_{k - 1} & -b_{k - 1} \\
@@ -192,7 +201,7 @@
 		\begin{bmatrix}
 			\Re(\lambda^k)	& -\Im(\lambda^k) \\
 			\Im(\lambda^k)	& \Re(\lambda^k)
-		\end{bmatrix}
+		\end{bmatrix}.
 	\end{align*}
 
 	Using this
@@ -214,7 +223,7 @@
 		\begin{bmatrix}
 			\cos b 	& -\sin b \\
 			\sin b 	& \cos b
-		\end{bmatrix}
+		\end{bmatrix}.
 	\end{align*}
 \end{proof}
 
@@ -309,7 +318,7 @@
 			\begin{bmatrix}
 				a 	& -b \\
 				b 	& a
-			\end{bmatrix}
+			\end{bmatrix}.
 	\end{equation*}
 	It then follows from Propositions \ref{prop:la:distinct}, \ref{prop:la:degenerate} and \ref{prop:la:complex} that
 	\begin{equation*}
@@ -333,14 +342,14 @@
 	\end{equation*}
 	respectively. And by Proposition~\ref{prop:la:ptp}, the matrix $e^{\vec At}$ is then given by
 	\begin{equation*}
-		e^{\vec At} = \vec W e^{\vec \Lambda t} \vec W^{-1}
+		e^{\vec At} = \vec W e^{\vec \Lambda t} \vec W^{-1}.
 	\end{equation*}
 \end{corollary}
 
 \begin{proof}
 	We analyse the Jordan Canonical Form of three possible cases of eigendecomposition of $\vec A \in \mathbb R^{2 \times 2}$ (characteristic equation $|\vec A - \lambda \vec I|$ a quadratic equation in $\lambda$):
 	\begin{enumerate}
-		\item Eigenvalues are real and distinct: $\lambda, \mu$. Eigenvectors are $\vec w_1, \vec w_2$.
+		\item Eigenvalues $\lambda, \mu$ are real (can be the same). Eigenvectors $\vec w_1, \vec w_2$ are distinct.
 		
 		In this case $n = k = 2$. For the matrix $\vec W = [\vec w_1, \vec w_2]$:
 		\begin{equation*}
@@ -351,9 +360,9 @@
 			\end{bmatrix}
 		\end{equation*}
 		where $J_1 = \lambda, J_2 = \mu$.
-		\item Eigenvalues are real and equal: $\lambda$. There is only one eigenvector, $\vec w$.
+		\item Eigenvalues $\lambda = \mu$ are real and equal. There is only one eigenvector $\vec w$. Need to find a generalised eigenvector $\vec v, (\vec A - \lambda \vec I) \vec v = \vec w$.
 		
-		In this case $n = k = 2$. For the matrix $\vec W = [\vec w, \vec w]$:
+		In this case $n = k = 2$. For the matrix $\vec W = [\vec w, \vec v]$:
 		\begin{equation*}
 			\vec W^{-1} \vec A \vec W = [\vec J_1]
 		\end{equation*}
@@ -363,7 +372,7 @@
 			\begin{bmatrix}
 				\lambda & 1 \\
 				0 & \lambda
-			\end{bmatrix}
+			\end{bmatrix}.
 		\end{equation*}
 		\item Eigenvalues are complex conjugates: $\lambda_1 = a + ib, \lambda_2 = a - ib$. Eigenvectors are $\vec w_1 = \vec u + i \vec v, \vec w_2 = \vec u - i \vec v$.
 
@@ -377,7 +386,7 @@
 			\begin{bmatrix}
 				a & -b \\
 				b & a
-			\end{bmatrix}
+			\end{bmatrix}.
 		\end{equation*}
 	\end{enumerate}
 \end{proof}
